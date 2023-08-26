@@ -1,0 +1,23 @@
+{
+  "name": "tree-mgmt",
+  "version": "0.0.1-alpha.0",
+  "description": "提供对树格式数据的增删改查等操作",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@sabrinayh5y:Sabrinayh5y/tree-mgmt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sabrinayh5y/tree-mgmt/issues"
+  },
+  "homepage": "https://github.com/Sabrinayh5y/tree-mgmt#readme",
+  "keywords": [
+    "tree",
+    "tree-mgmt"
+  ],
+  "author": "sabrinayh5y",
+  "license": "MIT"
+}
