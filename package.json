@@ -2,7 +2,11 @@
   "name": "tree-mgmt",
   "version": "0.0.1-alpha.0",
   "description": "提供对树格式数据的增删改查等操作",
-  "main": "index.js",
+  "main": "./dist/index.umd.min.js",
+  "scripts": {
+    "dev": "webpack serve --config ./build/webpack.config.js",
+    "build": "devby --delete ./lib && node ./build/pkg.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@sabrinayh5y:Sabrinayh5y/tree-mgmt.git"
@@ -16,5 +20,21 @@
     "tree-mgmt"
   ],
   "author": "Sabrinayh5y",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@types/jasmine": "^4.3.1",
+    "devby": "^0.5.0",
+    "rollup": "^3.20.6",
+    "terser": "^5.17.1",
+    "ts-loader": "^9.2.8",
+    "tslib": "^2.5.0",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "vislite": "^0.4.0"
+  }
 }

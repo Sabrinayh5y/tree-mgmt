@@ -3,24 +3,24 @@ const treeMgmt = (treeNode, filterFn) => {
    * 合并新树
    */
   const combineNewTree = () => {
-      const [lvIndex1, lvIndex2, lvIndex3] = parentIndexArry
-      // 组成父辈节点路径
-      if (lvIndex1 >= 0 && !newTreeNode[lvIndex1]) {
+    const [lvIndex1, lvIndex2, lvIndex3] = parentIndexArry
+    // 组成父辈节点路径
+    if (lvIndex1 >= 0 && !newTreeNode[lvIndex1]) {
       newTreeNode[lvIndex1] = { ...treeNode[lvIndex1], children: [] }
-      }
-      if (lvIndex2 >= 0 && !newTreeNode[lvIndex1].children[lvIndex2]) {
+    }
+    if (lvIndex2 >= 0 && !newTreeNode[lvIndex1].children[lvIndex2]) {
       newTreeNode[lvIndex1].children[lvIndex2] = {
-          ...treeNode[lvIndex1].children[lvIndex2],
-          children: [],
+        ...treeNode[lvIndex1].children[lvIndex2],
+        children: [],
       }
-      }
-      if (
+    }
+    if (
       lvIndex3 >= 0 &&
       !newTreeNode[lvIndex1].children[lvIndex2].children[lvIndex3]
-      ) {
+    ) {
       newTreeNode[lvIndex1].children[lvIndex2].children[lvIndex3] =
-          treeNode[lvIndex1].children[lvIndex2].children[lvIndex3]
-      }
+        treeNode[lvIndex1].children[lvIndex2].children[lvIndex3]
+    }
   }
   let len = 0 // 过滤的节点个数
   let parentIndexArry = [] // 初始化下标数组 用于寻路如[0,1,2]代表0-1-2
@@ -54,7 +54,8 @@ const treeMgmt = (treeNode, filterFn) => {
     }
     if (filterFn(node)) {
       len++
-      combineNewTree(parentIndexArry)
+      // combineNewTree(parentIndexArry)
+      combineNewTree()
     } else {
       // 从源数据中删除此节点，完成过滤
       // TODO
@@ -109,4 +110,5 @@ const DFSTree = (tree, fn) => {
     }
   }
 }
+
 export default treeMgmt

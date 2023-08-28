@@ -14,3 +14,23 @@ import treeMgmt from 'tree-mgmt'
 ```html
 <script src="https://cdn.jsdelivr.net/npm/tree-mgmt"></script>
 ```
+
+## dev
+
+```
+npm install
+```
+
+then
+
+```
+npm run dev
+```
+
+openpage: http://127.0.0.1:8080/test/usecase/demo.html
+
+## build
+
+```
+npm run build
+```

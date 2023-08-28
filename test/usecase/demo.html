@@ -4,21 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TreeMG</title>
-    <script src="../index.js"></script>
-    <script src="./data.js"></script>
   </head>
   <body>
     f12打开控制台<br>
     输入这里，失去焦点<br/>
     <input type="text" width="220" height="28" onChange="onChange(event)" />
-    <script>
-      const onChange = (e) => {
-        const val = e.target.value
-        treeMgmt(
-          fcnMsgArry,
-          (node) => val === '' || node.fcnNm.includes(val),
-        )
-      }
-    </script>
+    <script src="./dist.js"></script>
   </body>
 </html>
