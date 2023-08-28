@@ -1,10 +1,16 @@
-const treeMgmt = (treeNode, filterFn) => {
+/**
+ * Main function of tree
+ * @param treeNode tree data
+ * @param filterFn filter function
+ * @returns the filtered tree
+ */
+const treeMgmt = (treeNode: any[], filterFn: { (node: any): Boolean; }) => {
   /**
-   * 合并新树
+   * Merge the new tree
    */
   const combineNewTree = () => {
     const [lvIndex1, lvIndex2, lvIndex3] = parentIndexArry
-    // 组成父辈节点路径
+    // Compose the parent node path
     if (lvIndex1 >= 0 && !newTreeNode[lvIndex1]) {
       newTreeNode[lvIndex1] = { ...treeNode[lvIndex1], children: [] }
     }
@@ -22,14 +28,19 @@ const treeMgmt = (treeNode, filterFn) => {
         treeNode[lvIndex1].children[lvIndex2].children[lvIndex3]
     }
   }
-  let len = 0 // 过滤的节点个数
-  let parentIndexArry = [] // 初始化下标数组 用于寻路如[0,1,2]代表0-1-2
-  let lastNodeSnapshot = 0 // 上一次nodes的长度
+  // Number of nodes filtered
+  let len = 0
+  // Initializes an array of subscripts for pathfinding such as [0,1,2] for 0-1-2
+  let parentIndexArry = []
+  // The length of the last node
+  let lastNodeSnapshot = 0
   let currentChildLen = 0
-  let lv = 0 // 当前层次，从1开始
+  // Current level, starting from 1
+  let lv = 0
   let newTreeNode = []
-  const parentSiblingLenArry = [] // 初始化兄弟节点长度，用于对稀疏数组删除empty元素
-  const fn = (node, nodes) => {
+  // Initializes the length of the sibling node used to remove empty elements from a sparse array
+  const parentSiblingLenArry = []
+  const fn = (node: { children: any[]; }, nodes: any[]) => {
     const isLvUp = nodes.length >= lastNodeSnapshot
     if (isLvUp) {
       lv++
@@ -39,7 +50,7 @@ const treeMgmt = (treeNode, filterFn) => {
     const lvl1Len = treeNode.length
     parentSiblingLenArry[0] = lvl1Len
     if (nodes.length < lvl1Len - parentIndexArry[0] - 1) {
-      // 根据队列长度变化得出此时切换至下一个二级子树
+      // According to the change of queue length, we can switch to the next sub-tree
       lv = 1
     }
     parentIndexArry = parentIndexArry.slice(0, lv)
@@ -54,14 +65,13 @@ const treeMgmt = (treeNode, filterFn) => {
     }
     if (filterFn(node)) {
       len++
-      // combineNewTree(parentIndexArry)
       combineNewTree()
     } else {
-      // 从源数据中删除此节点，完成过滤
+      // Sometimes you need remove this node from the source data to complete the filtering
       // TODO
     }
     lastNodeSnapshot = nodes.length
-    // 对稀疏数组删除empty
+    // Delete empty for a sparse array
     const [lvIndex1, lvIndex2, lvIndex3] = parentIndexArry // 4 2 10
     const [, lvLen2, lvLen3] = parentSiblingLenArry // 13 3 11
     if (
@@ -72,7 +82,7 @@ const treeMgmt = (treeNode, filterFn) => {
 
       newTreeNode[lvIndex1].children[lvIndex2].children = newTreeNode[
         lvIndex1
-      ].children[lvIndex2].children.filter((item) => !!item)
+      ].children[lvIndex2].children.filter((item: any) => !!item)
     }
     if (
       lvIndex2 >= 0 &&
@@ -82,26 +92,26 @@ const treeMgmt = (treeNode, filterFn) => {
     ) {
       newTreeNode[lvIndex1].children = newTreeNode[
         lvIndex1
-      ].children.filter((item) => !!item)
+      ].children.filter((item: any) => !!item)
     }
     if (nodes.length === 0) {
       newTreeNode = newTreeNode.filter((item) => !!item)
     }
-    // 删除结束
+    // End of deletion
     console.log('node parentIndexArry lv', node, parentIndexArry, lv)
   }
-  // 深度优先遍历树
+  // Call Depth-First-Traversal of the tree
   DFSTree(treeNode, fn)
   console.log('len newTreeNode', len, newTreeNode)
-  return treeNode
+  return newTreeNode
 }
 /**
- * 深度优先
- * @param {Object} tree 
+ * Depth-First-Traversal
+ * @param {Array} tree 
  * @param {Function} fn 
  */
-const DFSTree = (tree, fn) => {
-  let node
+const DFSTree = (tree: any[], fn: { (node: any, nodes: any[]): void; }) => {
+  let node: { children: any[]; }
   const nodes = tree.slice()
   while ((node = nodes.shift())) {
     fn(node, nodes)

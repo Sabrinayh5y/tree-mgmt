@@ -1,1 +1,4 @@
 example
+build
+node_modules
+tsconfig.json

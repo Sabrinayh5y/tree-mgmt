@@ -3,8 +3,8 @@ Provides tree format data to find, modify, delete, edit and other operations
 
 **English** | [中文](./README.zh-CN.md)
 
-## doc
-1. esmodule import
+## import
+1. esmodule
 
 ```js
 import treeMgmt from 'tree-mgmt'
@@ -13,6 +13,24 @@ import treeMgmt from 'tree-mgmt'
 2. browser
 ```html
 <script src="https://cdn.jsdelivr.net/npm/tree-mgmt"></script>
+```
+
+## api
+
+```js
+/*
+ * Note:
+ * fcnMsgArry is a tree-structured data that has two properties: fcnNm and children.
+ * `fcnNm` can be replaced with any field value, while `children` link to his children node.
+ */
+import treeMgmt from 'tree-mgmt'
+import fcnMsgArry from './fcnMsgArry.json'
+
+const val = 'any val'
+const filteredTree = treeMgmt(
+    fcnMsgArry,
+    (node) => node.fcnNm.includes(val),
+  )
 ```
 
 ## dev
