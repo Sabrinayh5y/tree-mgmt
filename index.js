@@ -2,7 +2,7 @@
  * Tree-MG v0.0.1
  * https://github.com/Sabrinayh5y/Tree-MG
  *
- * Copyright OpenJS Foundation and other contributors
+ * Copyright Sabrinayh5y and other contributors
  * Released under the ISC license
  * https://github.com/Sabrinayh5y/Tree-MG/license
  *
