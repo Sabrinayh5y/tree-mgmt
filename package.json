@@ -1,6 +1,6 @@
 {
   "name": "tree-mgmt",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1",
   "description": "提供对树格式数据的增删改查等操作",
   "main": "./dist/index.umd.min.js",
   "scripts": {
